@@ -22,6 +22,15 @@ console.log(addToCollection(myCollection, 'Andy Grammer','Andy Grammer', '2016')
 
 console.log(myCollection);
 
+function showCollection(collection) {
+  for (let album of collection){
+    console.log(album.title + " by " + album.artist +
+    ", published in", album.yearPublished);
+  }
+}
+
+showCollection(myCollection)
+
 
 
 
