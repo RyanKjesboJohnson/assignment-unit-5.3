@@ -31,7 +31,7 @@ function showCollection(collection) {
 
 showCollection(myCollection)
 
-function findByArtist(artist2, collection) {
+function findByArtist(collection, artist2) {
   let output = [];
   for (let a of collection)
     if (artist2 === a.artist) {
@@ -42,10 +42,28 @@ function findByArtist(artist2, collection) {
         }
       output.push(record);
       }
-      console.log(output);
+      return console.log(output);
 }
 
-findByArtist('Andy Grammer', myCollection);
+findByArtist(myCollection, 'Andy Grammer');
+
+//stretch goals
+function search(collection, artist, year) {
+  let searchResults = [];
+  for (let a of collection){
+    if (artist === a.artist && year === a.yearPublished){
+      const record = {
+        title: a.title,
+        artist: a.artist,
+        yearPublished: a.yearPublished
+      }
+      searchResults.push (record);
+    }
+  }
+  return console.log(searchResults);
+}
+
+search(myCollection, 'Andy Grammer', '2016');
 
 
 
