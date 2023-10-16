@@ -31,7 +31,21 @@ function showCollection(collection) {
 
 showCollection(myCollection)
 
+function findByArtist(artist2, collection) {
+  let output = [];
+  for (let a of collection)
+    if (artist2 === a.artist) {
+      const record = {
+        title: a.title,
+        artist: a.artist,
+        yearPublished: a.yearPublished
+        }
+      output.push(record);
+      }
+      console.log(output);
+}
 
+findByArtist('Andy Grammer', myCollection);
 
 
 
