@@ -25,47 +25,60 @@ console.log(myCollection);
 function showCollection(collection) {
   for (let album of collection){
     console.log(album.title + " by " + album.artist +
-    ", published in", album.yearPublished);
+    ", published in, " + album.yearPublished);
   }
 }
 
 showCollection(myCollection)
 
-function findByArtist(collection, artist2) {
+function findByArtist(collection, artist) {
   let output = [];
   for (let a of collection)
-    if (artist2 === a.artist) {
-      const record = {
+    if (artist === a.artist) {
+      output.push ({
         title: a.title,
         artist: a.artist,
         yearPublished: a.yearPublished
-        }
-      output.push(record);
+        })
       }
-      return console.log(output);
+      return output;
 }
 
-findByArtist(myCollection, 'Andy Grammer');
+console.log(findByArtist(myCollection, 'Andy Grammer'));
+console.log(findByArtist(myCollection, 'Sting'));
 
 //stretch goals
-function search(collection, artist, year) {
+function search(collection, searchCriteria) {
   let searchResults = [];
+
+  if (searchCriteria.artist == undefined ||
+   searchCriteria.year == undefined ||
+    searchCriteria.artist === null ||
+     searchCriteria.year === null) {
+    searchResults = myCollection;
+  } else {
+
+
   for (let a of collection){
-    if (artist === a.artist && year === a.yearPublished){
-      const record = {
+//    console.log(artist);
+//    console.log(a.artist);
+//    console.log(year);
+//    console.log(a.yearPublished);
+    if (searchCriteria.artist === a.artist && searchCriteria.year === a.yearPublished){
+      searchResults.push ({
         title: a.title,
         artist: a.artist,
         yearPublished: a.yearPublished
-      }
-      searchResults.push (record);
+      })
     }
   }
-  return console.log(searchResults);
+}
+  return searchResults;
 }
 
-search(myCollection, 'Andy Grammer', '2016');
-
-
+console.log(search(myCollection, {artist: 'Andy Grammer', year: '2016'}));
+console.log(search(myCollection, {artist: 'Andy Grammer', year: '2002'}));
+console.log(search(myCollection, {year: 2009}));
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
